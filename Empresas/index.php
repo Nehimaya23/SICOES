@@ -43,7 +43,7 @@ $solicitantes= $sicoes->solicitantes();
                                          <td >'.$row['RTN'].'</td>
                                          <td >'.$row['DENOMINACION'].'</td>
                                          <td >'.$row['TELEFONO'].'</td>
-                                         <td><a id="'.$row['ID'].'" class="fa fa-edit btn btn-danger vehic_empresa"></a></td>
+                                         <td><a id="'.$row['ID'].'" class="fa fa-edit btn btn-danger vehic_empresa"><a id="'.$row['ID'].'" class="fa fa-edit btn btn-danger vehic_empresa"></a></td>
                                          <td><a id="'.$row['ID'].'" class="fa fa-edit btn btn-danger enviar_actualizar_empleado"></a></td>';
                                          
 

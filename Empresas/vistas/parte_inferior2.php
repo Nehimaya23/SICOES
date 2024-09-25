@@ -36,7 +36,7 @@
         <div class="modal-body"></div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="...BD/logout.php">Salir</a>
+          <a class="btn btn-primary" href="../bd/logout.php">Salir</a>
   
         </div>
       </div>
@@ -59,7 +59,7 @@
     <!-- datatables JS -->
     <script type="text/javascript" src="vendor/datatables/datatables.min.js"></script>    
     <!-- código propio JS --> 
-    <script type="text/javascript" src="main.js"></script>  
+    <script type="text/javascript" src="main2.js"></script>  
     
 
     
