@@ -16,11 +16,11 @@ $vehiculos= $sicoes->vehiculos($id);
 <!--INICIO del cont principal-->
 <div class="container">
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="mb-0">Vehículos</h1>
+    <h1 class="mb-0">Vehículos Blindados</h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="index.php">Empresas de Seguridad</a></li>
-            <li class="breadcrumb-item active" aria-current="page">VehIculos</li>
+            <li class="breadcrumb-item"><a href="index.php">Vehiculos Blindados</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Vehículos</li>
         </ol>
     </nav>
 </div>

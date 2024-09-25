@@ -35,6 +35,28 @@ switch ($od) {
         $row['url'] = 'vehiculos.php';
         echo json_encode($row);
 
+    break;
+    case 'darms':
+      $id_solicitante = $_POST['id'];
+      session_start();
+      $_SESSION['ids'] = $id_solicitante;
+
+      //RESPUESTA A PETICIÓN DEL CLIENTE (NAVEGADOR)
+      $row['answ'] = 1;
+      $row['url'] = 'armas.php';
+      echo json_encode($row);
+
+    break;
+    case 'dEmple':
+      $id_solicitante = $_POST['id'];
+      session_start();
+      $_SESSION['ids'] = $id_solicitante;
+
+      //RESPUESTA A PETICIÓN DEL CLIENTE (NAVEGADOR)
+      $row['answ'] = 1;
+      $row['url'] = 'empleados.php';
+      echo json_encode($row);
+
      break;
 
 

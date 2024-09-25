@@ -13,6 +13,7 @@ if($_SESSION["s_usuario"] === null){
 
 <head>
 
+<script src="js/main.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -74,12 +75,12 @@ if($_SESSION["s_usuario"] === null){
        
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="vehiculos.php">
+        <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-city"></i>
             <span>Empresas de seguridad</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="index2.php">
+        <a class="nav-link" href="vehiculosBli.php">
             <i class="fas fa-fw fa-car"></i>
             <span>Vehículos Blindados</span></a>
     </li>

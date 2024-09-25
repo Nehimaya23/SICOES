@@ -1,28 +1,3 @@
-$(document).ready(function(){
-    tablaPersonas = $("#tablaPersonas").DataTable({
-       "columnDefs":[{
-        "targets": -1,
-        "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"  
-       }],
-        
-    "language": {
-            "lengthMenu": "Mostrar _MENU_ registros",
-            "zeroRecords": "No se encontraron resultados",
-            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "sSearch": "Buscar:",
-            "oPaginate": {
-                "sFirst": "Primero",
-                "sLast":"Último",
-                "sNext":"Siguiente",
-                "sPrevious": "Anterior"
-             },
-             "sProcessing":"Procesando...",
-        }
-    });
-    
 $("#btnNuevo").click(function(){
     $("#formPersonas").trigger("reset");
     $(".modal-header").css("background-color", "#1cc88a");
@@ -31,10 +6,17 @@ $("#btnNuevo").click(function(){
     $("#modalCRUD").modal("show");        
     id=null;
     opcion = 1; //alta
-});    
+
     
 var fila; //capturar la fila para editar o borrar el registro
-    
+$(document).ready(function(){
+    $("#searchInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#tablaPersonas tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});   
 //botón EDITAR    
 $(document).on("click", ".btnEditar", function(){
     fila = $(this).closest("tr");
@@ -142,6 +124,47 @@ $( "a.vehic_empresa" ).click(function() {
                   }
                 });
 
+    //$('#formulario_empleados').attr('hidden', true);
+    //$('#formulario_edita_empleados').attr('hidden', false);
+
+});
+$( "a.emple_empresa" ).click(function() {
+    var valores = {od:'dEmple',
+                   id:$(this).attr('id')};
+    var url = 'crud.php';
+              $.ajax({
+                  data:  valores,
+                  url:   url,
+                  type:  'post',
+                  success:  function (respuesta) {
+                    var obj = JSON.parse(respuesta);
+                    if(obj.answ == 1){
+                        window.location.assign(obj.url);
+                    }
+                  }
+                });
+
+    //$('#formulario_empleados').attr('hidden', true);
+    //$('#formulario_edita_empleados').attr('hidden', false);
+
+});
+$( "a.arma_empresa" ).click(function() {
+    var valores = {od:'darms',
+                   id:$(this).attr('id')};
+    var url = 'crud.php';
+              $.ajax({
+                  data:  valores,
+                  url:   url,
+                  type:  'post',
+                  success:  function (respuesta) {
+                    var obj = JSON.parse(respuesta);
+                    if(obj.answ == 1){
+                        window.location.assign(obj.url);
+                    }
+                  }
+                });
+
+                
     //$('#formulario_empleados').attr('hidden', true);
     //$('#formulario_edita_empleados').attr('hidden', false);
 
