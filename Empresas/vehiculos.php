@@ -1,3 +1,4 @@
+
 <?php 
 require_once "vistas/parte_superior.php";
 
@@ -5,7 +6,6 @@ require_once "vistas/parte_superior.php";
 include_once('sicoes.class.php');
 $sicoes= new valores_sicoes('');
 $deptos= $sicoes->deptos();
-
 //session_start();
 //echo "EL ID DEL SOLICITANTE ES: ".$_SESSION['ids'];
 $id = $_SESSION['ids'];
@@ -13,14 +13,15 @@ $vehiculos= $sicoes->vehiculos($id);
 
 ?>
 
+
 <!--INICIO del cont principal-->
 <div class="container">
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="mb-0">Vehículos</h1>
+    <h1 class="mb-0">Detalle Vehículos</h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="index.php">Empresas de Seguridad</a></li>
-            <li class="breadcrumb-item active" aria-current="page">VehIculos</li>
+        <li class="breadcrumb-item"><a href="index.php">Solicitudes de Empresas de Seguridad</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalle Vehículos</li>
         </ol>
     </nav>
 </div>
@@ -40,30 +41,33 @@ $vehiculos= $sicoes->vehiculos($id);
                         <thead class="text-center">
                             <tr>
                                 <th>ID</th>
-                                <th>SERIE</th>
-                                <th>MOTOR</th>                                
-                                <th>MARCA</th>  
-                              
+                                <th>Marca</th>
+                                <th>Modelo</th>                                
+                                <th>Color</th>
+                                <th>Año</th>
+                                <th>Placa</th>  
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php    while($row = mysqli_fetch_assoc($vehiculos)){
-                               echo  '
-                                    <tr>
-                                         <td >'.$row['ID'].'</td>
-                                         <td >'.$row['SERIE'].'</td>
-                                         <td >'.$row['MOTOR'].'</td>
-                                         <td >'.$row['MOTOR'].'</td>
-                                         <td >'.$row['FK_ID_MARCA'].'</td>';
-                                          if ($row['ESTADO']=='1'){
-                                             echo ' <td id="estado_elemento'.$row['ID'].'" class="valor_estado_elemento" value="ACTIVO"><span value="A" class="label label-success label-mini">ACTIVO</span></td>
-                                                <td><a id="'.$row['ID'].'" class="fa fa-edit btn btn-danger enviar_actualizar_empleado"></a></td>';
-                                          }elseif ($row['ESTADO']=='0') {
-                                                 echo ' <td id="estado_elemento'.$row['ID'].'" class="valor_estado_elemento" value="INACTIVO"><span value="I"class="label label-danger label-mini">INACTIVO</span></td>
-                                                <td><a value="'.$row['ID'].'" id="'.$row['ID'].'" class="fa fa-edit btn btn-danger enviar_actualizar_empleado"> </a></td>';}
-                              echo '</tr>';
-                            }?>                             
+                        <?php while($row = mysqli_fetch_assoc($vehiculos)): ?>
+                                <tr>
+                                    <td><?php echo $row['ID']; ?></td>
+                                    <td><?php echo $row['MARCA']; ?></td>
+                                    <td><?php echo $row['MODELO']; ?></td>
+                                    <td><?php echo $row['COLOR']; ?></td>
+                                    <td><?php echo $row['YEAR']; ?></td>
+                                    <td><?php echo $row['PLACA']; ?></td>
+                                    <td class="text-center">
+                                    <a id="<?php echo $row['ID']; ?>" class="btn btn-dark arma_empresa mx-2" title='EDITAR'>
+                                    <i class="fas fa-crosshairs"></i>
+                                    </a>
+                                    <a id="<?php echo $row['ID']; ?>" class="btn btn-dark emple_empresa mx-2" title='DETALLE'>
+                                        <i class="fa-solid fa-users"></i>
+                                    </a>
+                                    </td>
+                            </tr>
+                            <?php endwhile; ?>                        
                         </tbody>        
                        </table>                    
                     </div>

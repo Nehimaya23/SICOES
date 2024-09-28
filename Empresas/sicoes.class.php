@@ -29,15 +29,45 @@ public function solicitantes(){
   return $this->dato1;
 }
 
+public function solicitudes_Empresas(){
+  $this->str_trae_array="SELECT A.ID,B.RTN,B.DENOMINACION,A.FECHA,A.STATUS 
+                         FROM `tbl_solicitudes`AS A 
+                         JOIN tbl_solicitantes AS B ON A.FK_SOLICITANTE = B.ID
+                         WHERE FK_TIPO_SOLICITUD > 1;";
+  $this->dato1 = mysqli_query($this->mysqli,  $this->str_trae_array);
+  return $this->dato1;
+}
+
 public function vehiculos($id){
-  $this->str_trae_array="SELECT ID, SERIE, MOTOR, FK_ID_MARCA
-                         FROM TBL_VEHICULOS
-                         WHERE FK_ID_SOLICITUD = '$id';";
+  $this->str_trae_array="SELECT A.ID,B.DESCRIP AS MARCA,C.DESCRIP AS MODELO,D.DESCRIP AS COLOR,A.YEAR,A.PLACA
+                         FROM `tbl_vehiculos` AS A
+                         JOIN tbl_marca AS B ON A.FK_ID_MARCA = B.ID
+                         JOIN tbl_modelo AS C ON A.FK_ID_MODELO = C.ID
+                         JOIN tbl_color AS D ON A.FK_ID_COLOR = D.ID
+                         WHERE A.FK_ID_SOLICITUD = '$id';";
+  $this->dato1 = mysqli_query($this->mysqli,  $this->str_trae_array);
+  return $this->dato1;
+}
+
+public function empleados_empre($id){
+  $this->str_trae_array="SELECT `ID`,`DNI`,CONCAT(`NOMBRES`,' ',`APELLIDOS`) AS NOMBRE,`TIPO_EMPLEADO`,`CARGO`,`TELEFONO`
+                         FROM `tbl_empleados` 
+                         WHERE `FK_ID_SOLICITUD` = '$id';";
+  $this->dato1 = mysqli_query($this->mysqli,  $this->str_trae_array);
+  return $this->dato1;
+}
+
+
+public function armas($id){
+  $this->str_trae_array="SELECT A.ID,A.MARCA,A.MODELO,A.SERIE,A.REG_BALISTICO
+                         FROM tbl_armas AS A
+                         WHERE A.FK_ID_SOLICITUD = '$id';";
   $this->dato1 = mysqli_query($this->mysqli,  $this->str_trae_array);
   return $this->dato1;
 }
 
 }
+
 
 
 

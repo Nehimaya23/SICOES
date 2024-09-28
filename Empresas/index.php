@@ -6,12 +6,12 @@ require_once "vistas/parte_superior.php";
 include_once('sicoes.class.php');
 $sicoes= new valores_sicoes('');
 $deptos= $sicoes->deptos();
-$solicitantes= $sicoes->solicitantes();
+$solicitudes= $sicoes->solicitudes_Empresas();
 ?>
 
 <!--INICIO del cont principal-->
 <div class="container">
-    <h1>Empresas de Seguridad</h1>
+    <h1>Solicitudes de Empresas de Seguridad</h1>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">            
@@ -29,20 +29,20 @@ $solicitantes= $sicoes->solicitantes();
                             <tr>
                                 <th>ID</th>
                                 <th>RTN</th>
-                                <th>Razón Social</th>                                
-                                <th>Teléfono</th>  
-                            
+                                <th>Solicitante</th>
+                                <th>Fecha Inicio</th>                                
+                                <th>Estado</th>  
                                 <th>Acciones</th> <!-- Added column for actions -->
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while($row = mysqli_fetch_assoc($solicitantes)): ?>
+                            <?php while($row = mysqli_fetch_assoc($solicitudes)): ?>
                                 <tr>
                                     <td><?php echo $row['ID']; ?></td>
                                     <td><?php echo $row['RTN']; ?></td>
                                     <td><?php echo $row['DENOMINACION']; ?></td>
-                                    <td><?php echo $row['TELEFONO']; ?></td>
-                                   
+                                    <td><?php echo $row['FECHA']; ?></td>
+                                    <td><?php echo $row['STATUS']; ?></td>
                                     <td>
                                         <a id="<?php echo $row['ID']; ?>" class="btn btn-dark arma_empresa" title='ARMAS'>
                                             <i class="fas fa-gun"></i> 

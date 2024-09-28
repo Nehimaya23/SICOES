@@ -7,7 +7,7 @@ $sicoes= new valores_sicoes('');
 $deptos= $sicoes->deptos();
 
 //session_start();
-//echo "EL ID DEL SOLICITANTE ES: ".$_SESSION['ids'];
+
 $id = $_SESSION['ids'];
 $vehiculos= $sicoes->vehiculos($id);
 
@@ -56,12 +56,7 @@ $vehiculos= $sicoes->vehiculos($id);
                                          <td >'.$row['MOTOR'].'</td>
                                          <td >'.$row['MOTOR'].'</td>
                                          <td >'.$row['FK_ID_MARCA'].'</td>';
-                                          if ($row['ESTADO']=='1'){
-                                             echo ' <td id="estado_elemento'.$row['ID'].'" class="valor_estado_elemento" value="ACTIVO"><span value="A" class="label label-success label-mini">ACTIVO</span></td>
-                                                <td><a id="'.$row['ID'].'" class="fa fa-edit btn btn-danger enviar_actualizar_empleado"></a></td>';
-                                          }elseif ($row['ESTADO']=='0') {
-                                                 echo ' <td id="estado_elemento'.$row['ID'].'" class="valor_estado_elemento" value="INACTIVO"><span value="I"class="label label-danger label-mini">INACTIVO</span></td>
-                                                <td><a value="'.$row['ID'].'" id="'.$row['ID'].'" class="fa fa-edit btn btn-danger enviar_actualizar_empleado"> </a></td>';}
+                                         
                               echo '</tr>';
                             }?>                             
                         </tbody>        
