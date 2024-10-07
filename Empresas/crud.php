@@ -58,6 +58,17 @@ switch ($od) {
       echo json_encode($row);
 
      break;
+     case 'dDet_Emp':
+      $id_solicitante = $_POST['id'];
+      session_start();
+      $_SESSION['ids'] = $id_solicitante;
+
+      //RESPUESTA A PETICIÓN DEL CLIENTE (NAVEGADOR)
+      $row['answ'] = 1;
+      $row['url'] = 'DetalleApoderado.php';
+      echo json_encode($row);
+
+     break;
 
 
 		 default:

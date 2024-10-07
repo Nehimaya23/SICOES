@@ -66,6 +66,31 @@ public function armas($id){
   return $this->dato1;
 }
 
+
+public function empre($id){
+  $this->str_trae_array="SELECT A.ID, B.RTN, B.DENOMINACION, A.FECHA, A.STATUS 
+                         FROM tbl_solicitudes AS A 
+                         JOIN tbl_solicitantes AS B ON A.FK_SOLICITANTE = B.ID
+                         WHERE A.ID = '$id';";
+  $this->dato1 = mysqli_query($this->mysqli,  $this->str_trae_array);
+  return $this->dato1;
+}
+
+
+public function DetalleApoderado(){
+  $this->str_trae_array="SELECT  A.ID AS iD, D.RTN, D.DENOMINACION, CONCAT(B.NOMBRES,' ', B.APELLIDOS) AS APODERADO_LEGAL, C.DESCRIP AS TIPO_SOLICITUD, A.FECHA
+                         FROM  tbl_solicitudes AS A
+                         JOIN   tbl_solicitantes AS D ON A.FK_SOLICITANTE = D.ID  
+                         JOIN   tbl_apoderado_legal AS B ON A.FK_APODERADO = B.ID
+                         JOIN   tbl_tipo_solicitud AS C ON A.FK_TIPO_SOLICITUD = C.ID;";
+  $this->dato1 = mysqli_query($this->mysqli,  $this->str_trae_array);
+  return $this->dato1;
+}
+
+
+
+
+
 }
 
 

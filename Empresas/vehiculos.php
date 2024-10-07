@@ -10,6 +10,7 @@ $deptos= $sicoes->deptos();
 //echo "EL ID DEL SOLICITANTE ES: ".$_SESSION['ids'];
 $id = $_SESSION['ids'];
 $vehiculos= $sicoes->vehiculos($id);
+$empre = $sicoes->empre($id);
 
 ?>
 
@@ -25,10 +26,45 @@ $vehiculos= $sicoes->vehiculos($id);
         </ol>
     </nav>
 </div>
+
+<div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <p class="lead">Datos de la solicitud</p>
+        <div class="table-responsive">        
+        <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">RTN</th>
+          <th scope="col">Razòn Social</th>
+          <th scope="col">Fecha Creaciòn</th>
+          <th scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php while ($row = mysqli_fetch_assoc($empre)): ?>
+                        <tr>
+                            <td><?php echo $row['ID']; ?></td>
+                            <td><?php echo $row['RTN']; ?></td>
+                            <td><?php echo $row['DENOMINACION']; ?></td>
+                            <td><?php echo $row['FECHA']; ?></td>
+                            <td><?php echo $row['STATUS']; ?></td>
+                        </tr>
+                    <?php endwhile; ?>       
+      </tbody>
+        </table>   
+     </div>
+      </div>
+    
+    </div>
+
+<div class="jumbotron jumbotron-fluid">
+<div class="container">
+<p class="lead">Vehìculos registrados</p>
 <div class="container">
         <div class="row">
             <div class="col-lg-12">            
-            <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nuevo</button>    
+            <!--<button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nuevo</button>-->   
             </div>    
         </div>    
     </div>    
@@ -74,7 +110,8 @@ $vehiculos= $sicoes->vehiculos($id);
                 </div>
         </div>  
     </div>    
-
+    </div>  
+    </div>   
 
 <!--Modal para CRUD-->
 <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,7 +119,7 @@ $vehiculos= $sicoes->vehiculos($id);
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>-->
                 </button>
             </div>
         <form id="formPersonas">    

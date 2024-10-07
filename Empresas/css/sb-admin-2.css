@@ -41,6 +41,19 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+
+.box-blue {
+	background-color:#d8ecf7;
+	border:1px solid #afcde3;
+}
+.centrado {
+  display: flex;
+  justify-content: center;  /* Centra horizontalmente */
+  align-items: center;      /* Centra verticalmente */
+  height: 100vh;            /* Altura completa de la pantalla */
+  background-color: #f0f0f0; /* Fondo para mejor visualización */
+  font-size: 24px;           /* Tamaño de fuente */
+}
 *,
 *::before,
 *::after {
@@ -5422,25 +5435,26 @@ a.badge-dark:focus, a.badge-dark.focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(90, 92, 105, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(90, 92, 105, 0.5);
 }
-
 .jumbotron {
-  padding: 2rem 1rem;
+  padding: 0rem 0rem;
   margin-bottom: 2rem;
-  background-color: #eaecf4;
-  border-radius: 0.3rem;
+  background-color: #fdfdfd; /* Color de fondo */
+  border-radius: 0.3rem; /* Borde redondeado */
+  border: 1px solid black; /* Define el borde para que el color se vea */
 }
 
-@media (min-width: 576px) {
+@media (min-width: 376px) {
   .jumbotron {
-    padding: 4rem 2rem;
+    padding: 1rem 1rem; /* Ajusta el padding en pantallas mayores a 376px */
   }
 }
 
 .jumbotron-fluid {
   padding-right: 0;
   padding-left: 0;
-  border-radius: 0;
+  border-radius: 5px; /* Define unidades para el borde redondeado */
 }
+
 
 .alert {
   position: relative;

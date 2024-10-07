@@ -9,7 +9,7 @@ $deptos= $sicoes->deptos();
 //session_start();
 //echo "EL ID DEL SOLICITANTE ES: ".$_SESSION['ids'];
 $id = $_SESSION['ids'];
-
+$empre = $sicoes->empre($id);
 $empleados_empre= $sicoes->empleados_empre($id);
 
 ?>
@@ -26,10 +26,45 @@ $empleados_empre= $sicoes->empleados_empre($id);
         </ol>
     </nav>
 </div>
+
+<div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <p class="lead">Datos de la solicitud</p>
+        <div class="table-responsive">        
+        <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">RTN</th>
+          <th scope="col">Razòn Social</th>
+          <th scope="col">Fecha Creaciòn</th>
+          <th scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php while ($row = mysqli_fetch_assoc($empre)): ?>
+                        <tr>
+                            <td><?php echo $row['ID']; ?></td>
+                            <td><?php echo $row['RTN']; ?></td>
+                            <td><?php echo $row['DENOMINACION']; ?></td>
+                            <td><?php echo $row['FECHA']; ?></td>
+                            <td><?php echo $row['STATUS']; ?></td>
+                        </tr>
+                    <?php endwhile; ?>       
+      </tbody>
+        </table>   
+     </div>
+      </div>
+    
+    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+    <p class="lead">Empleados registrados</p>
 <div class="container">
         <div class="row">
             <div class="col-lg-12">            
-            <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nuevo</button>    
+           <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nuevo</button>   
             </div>    
         </div>    
     </div>    
@@ -78,6 +113,8 @@ $empleados_empre= $sicoes->empleados_empre($id);
                     </div>
                 </div>
         </div>  
+    </div>    
+    </div>  
     </div>    
 
 

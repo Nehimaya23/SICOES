@@ -1,3 +1,24 @@
+$(document).ready(function(){
+    tablaPersonas = $("#tablaPersonas").DataTable({
+       
+        
+    "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast":"Último",
+                "sNext":"Siguiente",
+                "sPrevious": "Anterior"
+             },
+             "sProcessing":"Procesando...",
+        }
+    });
+    
 $("#btnNuevo").click(function(){
     $("#formPersonas").trigger("reset");
     $(".modal-header").css("background-color", "#1cc88a");
@@ -6,6 +27,9 @@ $("#btnNuevo").click(function(){
     $("#modalCRUD").modal("show");        
     id=null;
     opcion = 1; //alta
+});    
+
+
 
     
 var fila; //capturar la fila para editar o borrar el registro
@@ -17,6 +41,7 @@ $(document).ready(function(){
         });
     });
 });   
+
 //botón EDITAR    
 $(document).on("click", ".btnEditar", function(){
     fila = $(this).closest("tr");
@@ -32,10 +57,14 @@ $(document).on("click", ".btnEditar", function(){
     
     $(".modal-header").css("background-color", "#4e73df");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Editar Persona");            
+    $(".modal-title").text("Editar solicitud");            
     $("#modalCRUD").modal("show");  
     
 });
+
+
+
+
 
 //botón BORRAR
 $(document).on("click", ".btnBorrar", function(){    
@@ -148,6 +177,33 @@ $( "a.emple_empresa" ).click(function() {
     //$('#formulario_edita_empleados').attr('hidden', false);
 
 });
+
+
+$( "a.Det_Empre" ).click(function() {
+    var valores = {od:'dDet_Emp',
+                   id:$(this).attr('id')};
+    var url = 'crud.php';
+              $.ajax({
+                  data:  valores,
+                  url:   url,
+                  type:  'post',
+                  success:  function (respuesta) {
+                    var obj = JSON.parse(respuesta);
+                    if(obj.answ == 1){
+                        window.location.assign(obj.url);
+                    }
+                  }
+                });
+
+    //$('#formulario_empleados').attr('hidden', true);
+    //$('#formulario_edita_empleados').attr('hidden', false);
+
+});
+
+
+
+
+
 $( "a.arma_empresa" ).click(function() {
     var valores = {od:'darms',
                    id:$(this).attr('id')};
@@ -164,8 +220,9 @@ $( "a.arma_empresa" ).click(function() {
                   }
                 });
 
+
+
                 
-    //$('#formulario_empleados').attr('hidden', true);
-    //$('#formulario_edita_empleados').attr('hidden', false);
+ 
 
 });
