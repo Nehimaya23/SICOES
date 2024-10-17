@@ -68,8 +68,17 @@ $empre = $sicoes->empre($id);
     <div class="jumbotron jumbotron-fluid">
     <div class="container">
     <p class="lead">Armas registradas</p>
-    <div class="table-responsive">        
-        <table id="tablaPersonas" class="table table-striped table-bordered" style="width:100%">
+    <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal" title="Registro de Nueva Arma">
+    <i class="fas fa-gun"></i> Nueva Arma
+    </button>
+
+ 
+    <br>
+    
+    <div class="table-responsive">    
+    <br>
+        
+        <table id="tablaArmas" class="table table-striped table-bordered" style="width:100%">
             <thead class="text-center">
                 <tr>
                     <th>ID</th>
@@ -89,12 +98,9 @@ $empre = $sicoes->empre($id);
                         <td><?php echo $row['SERIE']; ?></td>
                         <td><?php echo $row['REG_BALISTICO']; ?></td>
                         <td class="text-center">
-                            <a id="<?php echo $row['ID']; ?>" class="btn btn-dark arma_empresa mx-2" title="EDITAR">
-                                <i class="fas fa-crosshairs"></i>
-                            </a>
-                            <a id="<?php echo $row['ID']; ?>" class="btn btn-dark emple_empresa mx-2" title="DETALLE">
-                                <i class="fa-solid fa-users"></i>
-                            </a>
+                        <a id="<?php echo $row['ID']; ?>" class="btn btn-danger btnEditar" title='EDITAR'>
+                        <i class="fas fa-edit" style="color: black;"></i> <!-- changed fa to fas for consistency -->
+                        </a>
                         </td>
                     </tr>
                 <?php endwhile; ?>       
@@ -115,31 +121,41 @@ $empre = $sicoes->empre($id);
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formPersonas">    
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nombre" class="col-form-label">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre" class="col-form-label">Departamento:</label>
-                        <select name="depto" id="depto" class="form-control">
-                            <?php while ($fila = mysqli_fetch_assoc($deptos)) : ?>
-                                <option value="<?php echo $fila['ID']?>"><?php echo $fila['DESCRIP']?></option>
-                            <?php endwhile; ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre" class="col-form-label">Municipio:</label>
-                        <select name="muni" id="muni" class="form-control" disabled>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
-                </div>
-            </form>    
+            <form id="formArmas">   
+            
+    <div class="modal-body">
+    <div class="form-group">
+            <label for="fk_id_solicitud" class="col-form-label">ID Solicitud:</label>
+            <input type="text" class="form-control" id="fk_id_solicitud" value="<?php echo $id; ?>" readonly>
+        </div> 
+        <div class="form-group">
+            <label for="marca" class="col-form-label">Marca</label>
+            <input type="text" class="form-control" id="marca" required>
+        </div>
+        <div class="form-group">
+            <label for="modelo" class="col-form-label">Modelo:</label>
+            <input type="text" class="form-control" id="modelo" required>
+        </div>
+        <div class="form-group">
+            <label for="serie" class="col-form-label">Serie:</label>
+            <input type="text" class="form-control" id="serie" required>
+        </div>
+        <div class="form-group">
+            <label for="reg_balistico" class="col-form-label">Registro Balístico:</label>
+            <input type="text" class="form-control" id="reg_balistico" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo_arma" class="col-form-label">Tipo de Arma:</label>
+            <input type="text" class="form-control" id="tipo_arma" required>
+        </div>
+       
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+        <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+    </div>
+</form> 
+
         </div>
     </div>
 </div>  

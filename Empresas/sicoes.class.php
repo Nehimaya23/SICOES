@@ -39,12 +39,9 @@ public function solicitudes_Empresas(){
 }
 
 public function vehiculos($id){
-  $this->str_trae_array="SELECT A.ID,B.DESCRIP AS MARCA,C.DESCRIP AS MODELO,D.DESCRIP AS COLOR,A.YEAR,A.PLACA
-                         FROM `tbl_vehiculos` AS A
-                         JOIN tbl_marca AS B ON A.FK_ID_MARCA = B.ID
-                         JOIN tbl_modelo AS C ON A.FK_ID_MODELO = C.ID
-                         JOIN tbl_color AS D ON A.FK_ID_COLOR = D.ID
-                         WHERE A.FK_ID_SOLICITUD = '$id';";
+  $this->str_trae_array="SELECT ID, MARCA,MODELO,COLOR,YEAR,PLACA
+                         FROM `tbl_vehiculos` 
+                         WHERE FK_ID_SOLICITUD = '$id';";
   $this->dato1 = mysqli_query($this->mysqli,  $this->str_trae_array);
   return $this->dato1;
 }

@@ -1,5 +1,6 @@
+// Inicialización de la tabla para "Personas" usando DataTables
 $(document).ready(function(){
-    tablaPersonas = $("#tablaPersonas").DataTable({
+    tablaArmas = $("#tablaArmas").DataTable({
        
         
     "language": {
@@ -19,16 +20,16 @@ $(document).ready(function(){
         }
     });
     
-$("#btnNuevo").click(function(){
-    $("#formPersonas").trigger("reset");
-    $(".modal-header").css("background-color", "#1cc88a");
-    $(".modal-header").css("color", "white");
-    $(".modal-title").text("Nueva Persona");            
-    $("#modalCRUD").modal("show");        
-    id=null;
-    opcion = 1; //alta
-});    
-
+    $("#btnNuevo").click(function(){
+        var formId = $(this).data('form-id');
+        $("#" + formId).trigger("reset");
+        $(".modal-header").css("background-color", "#1cc88a");
+        $(".modal-header").css("color", "white");
+        $(".modal-title").text("Nueva Arma");            
+        $("#modalCRUD").modal("show");        
+        id = null;
+        opcion = 1; //alta
+    });
 
 
     
@@ -41,68 +42,82 @@ $(document).ready(function(){
         });
     });
 });   
-
-//botón EDITAR    
+// Función para el botón "Editar"
 $(document).on("click", ".btnEditar", function(){
-    fila = $(this).closest("tr");
-    id = parseInt(fila.find('td:eq(0)').text());
-    nombre = fila.find('td:eq(1)').text();
-    pais = fila.find('td:eq(2)').text();
-    edad = parseInt(fila.find('td:eq(3)').text());
-    
+    fila = $(this).closest("tr"); // Obtener la fila seleccionada
+    id = parseInt(fila.find('td:eq(0)').text()); // Obtener el ID de la fila
+    nombre = fila.find('td:eq(1)').text(); // Obtener el nombre
+    pais = fila.find('td:eq(2)').text(); // Obtener el país
+    edad = parseInt(fila.find('td:eq(3)').text()); // Obtener la edad
+
+    // Llenar los campos del formulario con los datos de la fila seleccionada
     $("#nombre").val(nombre);
     $("#pais").val(pais);
     $("#edad").val(edad);
-    opcion = 2; //editar
-    
+    opcion = 2; // Editar (actualizar registro)
+
+    // Cambiar el estilo del modal para modo edición
     $(".modal-header").css("background-color", "#4e73df");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Editar solicitud");            
-    $("#modalCRUD").modal("show");  
-    
+    $(".modal-title").text("Editar arma"); // Cambiar el título del modal
+    $("#modalCRUD").modal("show"); // Mostrar el modal
 });
 
 
 
 
 
-//botón BORRAR
-$(document).on("click", ".btnBorrar", function(){    
-    fila = $(this);
-    id = parseInt($(this).closest("tr").find('td:eq(0)').text());
-    opcion = 3 //borrar
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+id+"?");
-    if(respuesta){
-        $.ajax({
-            url: "bd/crud.php",
-            type: "POST",
-            dataType: "json",
-            data: {opcion:opcion, id:id},
-            success: function(){
-                tablaPersonas.row(fila.parents('tr')).remove().draw();
-            }
-        });
-    }   
+
+
+$(document).ready(function() {
+    $('#formArmas').submit(function(e) {
+        e.preventDefault(); // Evita el envío inmediato del formulario
+
+        // Validaciones personalizadas
+        var marca = $('#marca').val();
+        var modelo = $('#modelo').val();
+        var serie = $('#serie').val();
+        var regBalistico = $('#reg_balistico').val();
+        var tipoArma = $('#tipo_arma').val();
+        
+        if (!marca || !modelo || !regBalistico || !tipoArma) {
+            alert('Por favor, complete todos los campos.');
+            return;
+        }
+
+        // Si las validaciones son correctas, envía el formulario (aquí puedes hacer una petición AJAX si lo deseas)
+        this.submit();
+    });
 });
-    
-$("#formPersonas").submit(function(e){
+
+$("#formArmas").submit(function(e){
     e.preventDefault();    
-    nombre = $.trim($("#nombre").val());
-    pais = $.trim($("#pais").val());
-    edad = $.trim($("#edad").val());    
+    fk_id_solicitud = $.trim($("#fk_id_solicitud").val());
+    marca = $.trim($("#marca").val());
+    modelo = $.trim($("#modelo").val());
+    serie = $.trim($("#serie").val());
+    reg_balistico = $.trim($("#reg_balistico").val());
+    tipo_arma = $.trim($("#tipo_arma").val()); 
+    
+
+    
+
     $.ajax({
-        url: "bd/crud.php",
+        url: "bd/crudArma.php",
         type: "POST",
         dataType: "json",
-        data: {nombre:nombre, pais:pais, edad:edad, id:id, opcion:opcion},
+        data: {fk_id_solicitud:fk_id_solicitud, marca:marca, serie:serie,modelo:modelo, reg_balistico:reg_balistico, tipo_arma:tipo_arma, opcion:opcion},
         success: function(data){  
             console.log(data);
-            id = data[0].id;            
-            nombre = data[0].nombre;
-            pais = data[0].pais;
-            edad = data[0].edad;
-            if(opcion == 1){tablaPersonas.row.add([id,nombre,pais,edad]).draw();}
-            else{tablaPersonas.row(fila).data([id,nombre,pais,edad]).draw();}            
+            fk_id_solicitud = data[0]. fk_id_solicitud;            
+            marca = data[0]. marca;
+            modelo = data[0].modelo;
+            serie = data[0].serie;
+            reg_balistico = data[0].reg_balistico;
+            tipo_arma = data[0].tipo_arma;
+           
+            if(opcion == 1){tablaPersonas.row.add([fk_id_solicitud, marca,modelo,serie,reg_balistico,tipo_arma]).draw();}
+            else{tablaPersonas.row(fila).data([fk_id_solicitud, marca,modelo,serie,reg_balistico,tipo_arma]).draw();}            
         }        
     });
     $("#modalCRUD").modal("hide");    
@@ -110,6 +125,9 @@ $("#formPersonas").submit(function(e){
 });    
     
 });
+
+
+
 
 //CONTROL PARA SELECCIÓN DE MUNICIPIOS EN FUNCIÓN DEL DEPARTAMENTO
 $( "#depto" ).on('change', function () {
@@ -199,12 +217,32 @@ $( "a.Det_Empre" ).click(function() {
     //$('#formulario_edita_empleados').attr('hidden', false);
 
 });
-
-
-
-
-
 $( "a.arma_empresa" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'darms', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+
+/*$( "a.Arma_empresa" ).click(function() {
     var valores = {od:'darms',
                    id:$(this).attr('id')};
     var url = 'crud.php';
@@ -220,9 +258,7 @@ $( "a.arma_empresa" ).click(function() {
                   }
                 });
 
+    //$('#formulario_empleados').attr('hidden', true);
+    //$('#formulario_edita_empleados').attr('hidden', false);
 
-
-                
- 
-
-});
+});*/

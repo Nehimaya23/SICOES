@@ -40,25 +40,30 @@ $vehiculos= $sicoes->vehiculos($id);
                         <thead class="text-center">
                             <tr>
                                 <th>ID</th>
-                                <th>SERIE</th>
-                                <th>MOTOR</th>                                
-                                <th>MARCA</th>  
-                              
+                                <th>Marca</th>
+                                <th>Modelo</th>                                
+                                <th>Color</th>  
+                                <th>Año</th> 
+                                <th>Placa</th>  
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php    while($row = mysqli_fetch_assoc($vehiculos)){
-                               echo  '
-                                    <tr>
-                                         <td >'.$row['ID'].'</td>
-                                         <td >'.$row['SERIE'].'</td>
-                                         <td >'.$row['MOTOR'].'</td>
-                                         <td >'.$row['MOTOR'].'</td>
-                                         <td >'.$row['FK_ID_MARCA'].'</td>';
-                                         
-                              echo '</tr>';
-                            }?>                             
+                        <?php while($row = mysqli_fetch_assoc($vehiculos)): ?>
+                                <tr>
+                                    <td><?php echo $row['ID']; ?></td>
+                                    <td><?php echo $row['MARCA']; ?></td>
+                                    <td><?php echo $row['MODELO']; ?></td>
+                                    <td><?php echo $row['COLOR']; ?></td>
+                                    <td><?php echo $row['YEAR']; ?></td>
+                                    <td><?php echo $row['PLACA']; ?></td>
+                                    <td class="text-center">
+                                    <a id="<?php echo $row['ID']; ?>" class="btn btn-danger btnEditar" title='EDITAR'>
+                                    <i class="fas fa-edit"></i>
+                                    </a>
+                                    </td>
+                            </tr>
+                            <?php endwhile; ?>  
                         </tbody>        
                        </table>                    
                     </div>

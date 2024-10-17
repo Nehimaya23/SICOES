@@ -19,7 +19,8 @@ if($_SESSION["s_usuario"] === null){
   <meta name="author" content="">
 
   <title>SICOES</title>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -76,7 +77,7 @@ if($_SESSION["s_usuario"] === null){
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">ACIONES</h6>
+            <h6 class="collapse-header">Reportería</h6>
             <a class="collapse-item" href="DetalleApoderado.php">Detalle apoderado</a>
             <a class="collapse-item" href="cards.php">Detalle empresa</a>
           </div>
@@ -152,7 +153,7 @@ if($_SESSION["s_usuario"] === null){
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              
+                
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Cerrar Sesión

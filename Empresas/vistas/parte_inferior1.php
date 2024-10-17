@@ -60,7 +60,7 @@
     <!-- datatables JS -->
     <script type="text/javascript" src="vendor/datatables/datatables.min.js"></script>    
     <!-- código propio JS --> 
-    <script type="text/javascript" src="Vehiculo.js"></script>  
+    <script type="text/javascript" src="Empleados.js"></script>  
    
 
     
