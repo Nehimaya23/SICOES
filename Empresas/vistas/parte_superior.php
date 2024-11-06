@@ -18,12 +18,18 @@ if($_SESSION["s_usuario"] === null){
   <meta name="description" content="">
   <meta name="author" content="">
 
+<<<<<<< Updated upstream
   <title>SB Admin 2 - Dashboard</title>
 
+=======
+  <title>SICOES</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="img/sicoes.ico">
+>>>>>>> Stashed changes
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+  <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">        
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -43,9 +49,15 @@ if($_SESSION["s_usuario"] === null){
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
+<<<<<<< Updated upstream
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
+=======
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
+        <div class="sidebar-brand-icon ">
+          <img src="../Empresas/img/sicoes.png" width="80" height="55">
+>>>>>>> Stashed changes
         </div>
         <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
       </a>
@@ -55,7 +67,7 @@ if($_SESSION["s_usuario"] === null){
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="dashboard.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -70,6 +82,7 @@ if($_SESSION["s_usuario"] === null){
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
+<<<<<<< Updated upstream
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Components</span>
@@ -82,8 +95,44 @@ if($_SESSION["s_usuario"] === null){
           </div>
         </div>
       </li>
+=======
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmpresa" aria-expanded="true" aria-controls="collapseEmpresa">
+    <i class="fas fa-fw fa-city"></i>
+    <span>Empresas de Seguridad</span>
+  </a>
+  <div id="collapseEmpresa" class="collapse" aria-labelledby="headingEmpresa" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <a class="collapse-item" href="SolicitudesEmpresa.php">Solicitudes</a>
+      <a class="collapse-item" href="SolicitantesEmpresa.php">Solicitantes</a>
+    </div>
+  </div>
+</li>
+>>>>>>> Stashed changes
+
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVehiculos" aria-expanded="true" aria-controls="collapseVehiculos">
+    <i class="fas fa-fw fa-car"></i>
+    <span>Vehículos Blindados</span>
+  </a>
+  <div id="collapseVehiculos" class="collapse" aria-labelledby="headingVehiculos" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <a class="collapse-item" href="SolicitudesBlindado.php">Solicitudes</a>
+      <a class="collapse-item" href="SolicitantesBlindado.php">Solicitantes</a>
+    </div>
+  </div>
+</li>
+
+<<<<<<< Updated upstream
+=======
+<li class="nav-item">
+  <a class="nav-link" href="SolicitudesEmpleados.php">
+    <i class="fas fa-users"></i>
+    <span>Empleados DICSPS</span>
+  </a>
+</li>
 
 
+>>>>>>> Stashed changes
     
 
       <!-- Divider -->
@@ -252,6 +301,7 @@ if($_SESSION["s_usuario"] === null){
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+<<<<<<< Updated upstream
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
@@ -265,6 +315,9 @@ if($_SESSION["s_usuario"] === null){
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
+=======
+                
+>>>>>>> Stashed changes
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Cerrar Sesión

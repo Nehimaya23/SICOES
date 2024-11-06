@@ -29,8 +29,13 @@ $('#formLogin').submit(function(e){
                        confirmButtonText:'Ingresar'
                    }).then((result) => {
                        if(result.value){
+<<<<<<< Updated upstream
                            window.location.href = "vistas/pag_inicio.php";
                            window.location.href = "Empresas/index.php";
+=======
+                     ;
+                           window.location.href = "Empresas/dashboard.php";
+>>>>>>> Stashed changes
                        }
                    })
                    

@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>SICOES</title>
-
+        <link rel="icon" href="Empresas/img/sicoes.ico">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="estilos.css">
         <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">        

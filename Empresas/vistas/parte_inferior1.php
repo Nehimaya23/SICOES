@@ -1,12 +1,13 @@
 
-      </div>
+     
+     </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; SICOES 2024</span>
           </div>
         </div>
       </footer>
@@ -46,29 +47,22 @@
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-<<<<<<< Updated upstream
-  
-=======
 
  
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
->>>>>>> Stashed changes
+  
     <!-- datatables JS -->
     <script type="text/javascript" src="vendor/datatables/datatables.min.js"></script>    
     <!-- código propio JS --> 
-    <script type="text/javascript" src="main.js"></script>  
-    <script type="text/javascript" src="Armas.js"></script>  
     <script type="text/javascript" src="Empleados.js"></script>  
-    <script type="text/javascript" src="Vehiculos.js"></script>  
+   
+
     
 
 </body>

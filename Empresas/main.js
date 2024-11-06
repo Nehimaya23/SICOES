@@ -1,10 +1,16 @@
+// Inicialización de la tabla para "Personas" usando DataTables
 $(document).ready(function(){
+<<<<<<< Updated upstream
     tablaPersonas = $("#tablaPersonas").DataTable({
        "columnDefs":[{
         "targets": -1,
         "data":null,
         "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"  
        }],
+=======
+    tablaArmas = $("#tablaArmas").DataTable({
+       
+>>>>>>> Stashed changes
         
     "language": {
             "lengthMenu": "Mostrar _MENU_ registros",
@@ -23,6 +29,7 @@ $(document).ready(function(){
         }
     });
     
+<<<<<<< Updated upstream
 $("#btnNuevo").click(function(){
     $("#formPersonas").trigger("reset");
     $(".modal-header").css("background-color", "#1cc88a");
@@ -69,59 +76,39 @@ $(document).on("click", ".btnBorrar", function(){
             data: {opcion:opcion, id:id},
             success: function(){
                 tablaPersonas.row(fila.parents('tr')).remove().draw();
-            }
-        });
-    }   
-});
-    
-$("#formPersonas").submit(function(e){
-    e.preventDefault();    
-    nombre = $.trim($("#nombre").val());
-    pais = $.trim($("#pais").val());
-    edad = $.trim($("#edad").val());    
-    $.ajax({
-        url: "bd/crud.php",
-        type: "POST",
-        dataType: "json",
-        data: {nombre:nombre, pais:pais, edad:edad, id:id, opcion:opcion},
-        success: function(data){  
-            console.log(data);
-            id = data[0].id;            
-            nombre = data[0].nombre;
-            pais = data[0].pais;
-            edad = data[0].edad;
-            if(opcion == 1){tablaPersonas.row.add([id,nombre,pais,edad]).draw();}
-            else{tablaPersonas.row(fila).data([id,nombre,pais,edad]).draw();}            
-        }        
-    });
-    $("#modalCRUD").modal("hide");    
-    
-});    
-    
+=======
 });
 
-//CONTROL PARA SELECCIÓN DE MUNICIPIOS EN FUNCIÓN DEL DEPARTAMENTO
-$( "#depto" ).on('change', function () {
-    var id = $(this).val();
-    //console.log(departamento);
-    var valores = {od:'sel_mun',
-                   cod_depto:id
-    };
+/* --------------------------------Empresa de Seguridad------------------------------------- */
+   
+
+
+/**ARMAS EMPRESA */
+$( "a.arma_empresa" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'darms', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
     $.ajax({
-    data:  valores,
-    url:   'crud.php',
-    type:  'post',
-    success:  function (respuesta) {
-          var obj = JSON.parse(respuesta);
-          //console.log(obj.depto_correcto);
-          if(obj.answ == 1){
-            $("#muni").html(obj.resp);
-            $("#muni").removeAttr('disabled');
-          }else {
-            alert("NO FUE POSIBLE OBTENER RESULTADOS");
-          }
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+>>>>>>> Stashed changes
+            }
         }
     });
+<<<<<<< Updated upstream
   
   });
 
@@ -146,3 +133,262 @@ $( "a.vehic_empresa" ).click(function() {
     //$('#formulario_edita_empleados').attr('hidden', false);
 
 });
+=======
+});
+
+
+ /******Empleado Empresa*/
+ 
+$( "a.emple_empresa" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'dEmple', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+
+
+ /**Vehiculo empresa*/
+$( "a.vehic_empresa" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'dveh', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+
+
+
+ /**Permiso EMPRESA*/
+ $( "a.Perm_empresa" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'dpermiso', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+
+
+ /**DOCUMENTACION EMPRESA*/
+ $( "a.doc_empresa" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'ddocumentacionEmp', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+
+
+
+ /**Permiso EMPLEADO*/
+ $( "a.Perm_empleado" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'dpermisoEmp', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+/* --------------------------------VEHICULOS BLINDADOS------------------------------------- */
+
+
+
+
+ /**VEHICULO BLINDADO*/
+ 
+ $( "a.Veh_Bli" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'dvehiculoBli', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+
+ /**DETALLE VEHICULO BLINDADO*/
+ $( "a.doc_empresa" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'ddocumentacionEmp', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+
+
+ /**Permiso EMPLEADO*/
+ $( "a.Perm_blinado" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'dpermisoBli', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+ /**DOCUMENTACION VEHICULO BLINDADO*/
+ $( "a.doc_empresa" ).click(function() {
+    var id = $(this).data('id'); // Cambiado de id a data-id
+
+    // Validar que el id no sea undefined
+    if (typeof id === 'undefined') {
+        console.error("ID no definido");
+        return; // Salir de la función si no hay ID
+    }
+
+    var valores = { od: 'ddocumentacionEmp', id: id }; // Enviar id en la solicitud AJAX
+    var url = 'crud.php';
+    
+    $.ajax({
+        data: valores,
+        url: url,
+        type: 'post',
+        success: function (respuesta) {
+            var obj = JSON.parse(respuesta);
+            if (obj.answ == 1) {
+                window.location.assign(obj.url);
+            }
+        }
+    });
+});
+>>>>>>> Stashed changes
