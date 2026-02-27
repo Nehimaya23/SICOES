@@ -20,7 +20,7 @@
       <div class="container-login">
         <div class="wrap-login">
             <form class="login-form validate-form" id="formLogin" action="" method="post">
-            <img src="CRUD/EMPRESAS/img/w.png" alt="Icono PNG" width="250" height="130" class="center-image">
+            
                 <span class="login-form-title">LOGIN</span>
                   
                 <div class="wrap-input100" data-validate = "Usuario incorrecto">
@@ -44,7 +44,7 @@
     </div>     
     
     <!-- Imagen posicionada en la esquina inferior izquierda -->
-    <img src="CRUD/EMPRESAS/img/sig.png" alt="Icono PNG" width="250" height="130" class="corner-image">
+  
         
      <script src="jquery/jquery-3.3.1.min.js"></script>    
      <script src="bootstrap/js/bootstrap.min.js"></script>    
